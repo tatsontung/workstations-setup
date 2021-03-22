@@ -1,0 +1,8 @@
+# Local export path
+MINIO_VOLUMES="/home/concourse-ws/minio"
+# Use if you want to run Minio on a custom port.
+MINIO_OPTS="--address :6123"
+# Access Key of the server
+MINIO_ACCESS_KEY=MinioKey
+# Secret key of the server
+MINIO_SECRET_KEY=MinioSecret

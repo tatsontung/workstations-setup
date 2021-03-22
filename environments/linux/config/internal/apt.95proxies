@@ -1,0 +1,5 @@
+Acquire::http::proxy "http://127.0.0.1:3128";
+Acquire::https::proxy "http://127.0.0.1:3128";
+Acquire::http::proxy::corporate.internal.repo "DIRECT";
+Acquire::http::proxy::deb.nodesource.com "http://127.0.0.1:3128";
+Acquire::https::proxy::download.docker.com "http://127.0.0.1:3128";
