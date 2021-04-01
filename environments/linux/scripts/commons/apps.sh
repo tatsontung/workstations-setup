@@ -72,7 +72,7 @@ use-theme-colors=false
 visible-name='Default'
 EOL
 
-# Gnome Terminalcle
+# Gnome Terminale
 cat > /tmp/gnome-terminal.conf <<EOL
 [/]
 list=['8ea9f29b-56e8-466a-b1f9-c400ae62d070']

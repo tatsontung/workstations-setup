@@ -1,7 +1,14 @@
 #!/usr/bin/env bash
 echo
-echo "Configuring bash with oh-my-zsh"
+echo "Configuring bash with bash_it and zsh with oh-my-zsh"
+git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
 git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+
+echo "Install tmux plugin manager"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+echo "Install starship prompt"
+curl -fsSL https://starship.rs/install.sh | bash
 
 # Exit the zsh script and continue
 echo "9k configurations"
