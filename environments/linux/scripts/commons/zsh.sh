@@ -20,12 +20,7 @@ echo
 echo "Copy zsh configuration"
 mkdir -p ~/.oh-my-zsh/custom/
 
-if [ "$(whoami)" != "root" ]
-then
-  sudo chsh -s `which zsh`
-else
-  chsh -s `which zsh`
-fi
+chsh -s `which zsh`
 
 touch $HOME/.credrc.sh
 
