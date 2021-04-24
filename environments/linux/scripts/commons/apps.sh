@@ -131,7 +131,7 @@ EOL
 
 echo "Installing angular 2 core"
 export NG_CLI_ANALYTICS=ci
-npm i -g @angular/cli @angular/core
+npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 
 # Vim
 echo
