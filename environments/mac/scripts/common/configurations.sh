@@ -19,5 +19,3 @@ if [ ! -d ~/.vim ]; then
     ~/.vim/bin/install
 fi
 popd
-
-
