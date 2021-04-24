@@ -30,7 +30,7 @@ pushd ~/
 if [ ! -d ~/.config/tilix/shemes ]; then
     mkdir -p ~/.config/tilix/schemes/
     wget -qO $HOME"/.config/tilix/schemes/homebrew.json" https://git.io/v7Qa4
-    git clone https://github.com/tatsontung/tilix-gruvbox.git
+    git clone https://github.com/MichaelThessel/tilix-gruvbox.git
     pushd tilix-gruvbox
     cp gruvbox-* ~/.config/tilix/schemes/
     popd
@@ -137,7 +137,7 @@ npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 echo
 echo "Installing vim configuration"
 if [ ! -d ~/.vim ]; then
-  git clone https://github.com/tatsontung/vim.git ~/.vim
+  git clone https://github.com/tatsontung/vim ~/.vim
   curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   ln -s ~/.vim/.vimrc ~/.vimrc
   ~/.vim/bin/install
