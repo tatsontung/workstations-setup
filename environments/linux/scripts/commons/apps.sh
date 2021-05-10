@@ -137,8 +137,9 @@ npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 echo
 echo "Installing vim configuration"
 if [ ! -d ~/.vim ]; then
-  git clone https://github.com/tatsontung/vim ~/.vim
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  git clone https://github.com/tatsontung/vim ~/.config/vim
+  curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  ln -s $HOME/.config/vim $HOME/.vim
   ln -s ~/.vim/.vimrc ~/.vimrc
   ~/.vim/bin/install
   mkdir -p ~/.vim/colors
