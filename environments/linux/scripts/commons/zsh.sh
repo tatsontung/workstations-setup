@@ -10,6 +10,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 echo "Install starship prompt"
 curl -fsSL https://starship.rs/install.sh | bash
 
+echo "Install zplug a plugin manager for zsh"
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
 # Exit the zsh script and continue
 echo "9k configurations"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
