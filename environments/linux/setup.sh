@@ -4,7 +4,7 @@ set -e
 
 DIST=$1
 ENVR=$2
-MY_DIR="$(dirname "$0")"
+export MY_DIR="$(dirname "$0")"
 echo "$MY_DIR"
 function install_script() {
     echo "Install custom dircolors"
