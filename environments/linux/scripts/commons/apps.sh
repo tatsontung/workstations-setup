@@ -14,17 +14,6 @@ if [ ! -d ~/.config/tilix/shemes ]; then
 fi
 popd
 
-if ! command -v dconf &> /dev/null
-then
-    echo "COMMAND dconf could not be found think to switch to Gnome"
-else
-  cp ${MY_DIR}/config/gnome.terminal.conf /tmp/gnome.terminal.conf
-  cp ${MY_DIR}/config/tilix.terminal.conf /tmp/tilix.terminal.conf
-  dconf load /com/gexperts/Tilix/ < /tmp/gnome.terminal.conf
-  dconf load /org/gnome/terminal/ < /tmp/tilix.terminal.conf
-fi
-
-
 # Install FzF
 echo
 echo "Installing fzf configuration"
