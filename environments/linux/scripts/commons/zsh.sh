@@ -1,11 +1,34 @@
 #!/usr/bin/env bash
 echo
-echo "Configuring bash with bash_it and zsh with oh-my-zsh"
-git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
-git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+echo "Configuring bash with bash_it"
+if [ ! -d ~/.bash_it ]; then
+    git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it
+else
+    echo "Already clone bash_it"
+fi
+
+echo "Install oh-my-zsh"
+if [ ! -d ~/.oh-my-zsh ]; then
+    git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+    # Exit the zsh script and continue
+    echo "9k configurations"
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    echo
+    echo "Copy zsh configuration"
+    mkdir -p ~/.oh-my-zsh/custom/
+else
+    echo " Already clone and config oh-my-zsh"
+fi
 
 echo "Install tmux plugin manager"
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+    echo "Already have tmux tpm"
+fi
 
 echo "Install starship prompt"
 curl -fsSL https://starship.rs/install.sh | bash
@@ -13,19 +36,8 @@ curl -fsSL https://starship.rs/install.sh | bash
 echo "Install zplug a plugin manager for zsh"
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
-# Exit the zsh script and continue
-echo "9k configurations"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-echo
-echo "Copy zsh configuration"
-mkdir -p ~/.oh-my-zsh/custom/
-
-chsh -s `which zsh`
-
 touch $HOME/.credrc.sh
+chsh -s `which zsh`
 
 echo
 echo "-----------------------------------------"

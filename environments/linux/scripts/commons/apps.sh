@@ -14,72 +14,14 @@ if [ ! -d ~/.config/tilix/shemes ]; then
 fi
 popd
 
-#cat > /tmp/tilix.conf <<EOL
-#[/]
-#enable-wide-handle=false
-#prompt-on-close=true
-#prompt-on-delete-profile=true
-#quake-height-percent=90
-#quake-specific-monitor=0
-#terminal-title-show-when-single=false
-#terminal-title-style='small'
-#theme-variant='system'
-#warn-vte-config-issue=false
-#window-style='borderless'
-
-#[profiles]
-#list=['2b7c4080-0ddd-46c5-8f23-563fd3ba789d']
-
-#[profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
-#background-color='#1D2021'
-#background-transparency-percent=0
-#badge-color-set=false
-#badge-position='northeast'
-#badge-text='${username}${hostname}'
-#bold-color-set=false
-#cursor-colors-set=false
-#dim-transparency-percent=0
-#font='Monofur Nerd Font Bold 12'
-#foreground-color='#EBDBB2'
-#highlight-colors-set=false
-#login-shell=true
-#palette=['#1D2021', '#CC241D', '#98971A', '#D79921', '#458588', '#B16286', '#689D6A', '#BDAE93', '#7C6F64', '#FB4934', '#B8BB26', '#FABD2F', '#83A598', '#D3869B', '#8EC07C', '#EBDBB2']
-#use-system-font=false
-#use-theme-colors=false
-#visible-name='Default'
-#EOL
-
-# Gnome Terminale
-#cat > /tmp/gnome-terminal.conf <<EOL
-#[/]
-#list=['8ea9f29b-56e8-466a-b1f9-c400ae62d070']
-
-#[:8ea9f29b-56e8-466a-b1f9-c400ae62d070]
-#allow-bold=true
-#background-color='#282828282828'
-#background-transparency-percent=13
-#bold-color='#ebebdbdbb2b2'
-#bold-color-same-as-fg=true
-#font='Monofur Nerd Font Mono Bold 12'
-#foreground-color='#ebebdbdbb2b2'
-#highlight-background-color='#'
-#highlight-colors-set=true
-#highlight-foreground-color='#'
-#palette=['#282828282828', '#cccc24241d1d', '#989897971a1a', '#d7d799992121', '#454585858888', '#b1b162628686', '#68689d9d6a6a', '#a8a899998484', '#929283837474', '#fbfb49493434', '#b8b8bbbb2626', '#fafabdbd2f2f', '#8383a5a59898', '#d3d386869b9b', '#8e8ec0c07c7c', '#ebebdbdbb2b2']
-#use-system-font=false
-#use-theme-background=false
-#use-theme-colors=false
-#use-theme-transparency=false
-#use-transparent-background=true
-#visible-name='Gruvbox Dark'
-#EOL
-
 if ! command -v dconf &> /dev/null
 then
     echo "COMMAND dconf could not be found think to switch to Gnome"
 else
-    dconf load /com/gexperts/Tilix/ < ${MY_DIR}/config/gnome.terminal.conf
-    dconf load /org/gnome/terminal/ < ${MY_DIR}/config/tilix-terminal.conf
+  cp ${MY_DIR}/config/gnome.terminal.conf /tmp/gnome.terminal.conf
+  cp ${MY_DIR}/config/tilix.terminal.conf /tmp/tilix.terminal.conf
+  dconf load /com/gexperts/Tilix/ < /tmp/gnome.terminal.conf
+  dconf load /org/gnome/terminal/ < /tmp/tilix.terminal.conf
 fi
 
 
@@ -143,12 +85,16 @@ curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/i
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Install Go
-curl -O https://dl.google.com/go/go1.15.linux-amd64.tar.gz
-tar xvf go1.15.linux-amd64.tar.gz
-mkdir -p ~/sdk
-mv go ~/sdk/go1.15
-ln -s ~/sdk/go1.15 ~/sdk/go
-rm go1.15.linux-amd64.tar.gz
+if [ ! -d ~/sdk/go ]; then
+  curl -O https://dl.google.com/go/go1.15.linux-amd64.tar.gz
+  tar xvf go1.15.linux-amd64.tar.gz
+  mkdir -p ~/sdk
+  mv go ~/sdk/go1.15
+  ln -s ~/sdk/go1.15 ~/sdk/go
+  rm go1.15.linux-amd64.tar.gz
+else
+  echo "Already have go install"
+fi
 
 # Install SDK Man
 curl -s "https://get.sdkman.io" | bash
