@@ -1,19 +1,5 @@
 #!/usr/bin/env bash
 
-# Tilix
-echo "Install tilix color shemes and load themes"
-pushd ~/
-if [ ! -d ~/.config/tilix/shemes ]; then
-    mkdir -p ~/.config/tilix/schemes/
-    wget -qO $HOME"/.config/tilix/schemes/homebrew.json" https://git.io/v7Qa4
-    git clone https://github.com/MichaelThessel/tilix-gruvbox.git
-    pushd tilix-gruvbox
-    cp gruvbox-* ~/.config/tilix/schemes/
-    popd
-    rm -rf tilix-gruvbox
-fi
-popd
-
 # Install FzF
 echo
 echo "Installing fzf configuration"
@@ -60,7 +46,7 @@ fi
 echo
 echo "Installing nvim configuration"
 if [ ! -d ~/.config/nvim ]; then
-  git clone -b tatsontung https://github.com/tatsontung/nvim ~/.config/nvim
+  git clone -b tatvim https://github.com/tatsontung/nvim ~/.config/nvim
   curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   ~/.config/nvim/utils/install.sh
 else
