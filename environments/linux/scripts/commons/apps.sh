@@ -8,6 +8,7 @@ if [ ! -d ~/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 fi
 
+# Install Nodejs and NPM
 echo "Installing node"
 export NVM_DIR="$HOME/.nvm" && (
   git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
@@ -26,32 +27,6 @@ EOL
 echo "Installing angular 2 core"
 export NG_CLI_ANALYTICS=ci
 npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
-
-# Vim
-echo
-echo "Installing vim configuration"
-if [ ! -d ~/.vim ]; then
-  git clone https://github.com/tatsontung/vim ~/.config/vim
-  curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  ln -s $HOME/.config/vim $HOME/.vim
-  ln -s ~/.vim/.vimrc ~/.vimrc
-  ~/.vim/bin/install
-  mkdir -p ~/.vim/colors
-  ln -s ~/.vim/plugged/gruvbox/colors/gruvbox.vim ~/.vim/colors/gruvbox.vim
-else
-  echo "Already clone vim repo"
-fi
-
-# NVim
-echo
-echo "Installing nvim configuration"
-if [ ! -d ~/.config/nvim ]; then
-  git clone -b tatvim https://github.com/tatsontung/nvim ~/.config/nvim
-  curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  ~/.config/nvim/utils/install.sh
-else
-  echo "Already clone nvim repo"
-fi
 
 # Install lazy docker
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
