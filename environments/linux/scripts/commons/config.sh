@@ -85,7 +85,7 @@ popd
 #visible-name='Gruvbox'
 #EOL
 
-# Dracula Themes
+# Dracula Themes for Tilix
 cat > /tmp/tilix.terminal.conf <<EOL
 [/]
 enable-wide-handle=false
@@ -119,7 +119,7 @@ use-theme-colors=false
 visible-name='Dracula'
 EOL
 
-# Dracula Themes
+# Dracula Themes for Gnome Terminal
 cat > /tmp/gnome.terminal.conf <<EOL
 [/]
 list=['8ea9f29b-56e8-466a-b1f9-c400ae62d070']
