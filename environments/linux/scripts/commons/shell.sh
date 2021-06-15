@@ -9,11 +9,7 @@ fi
 echo "Install starship prompt"
 curl -fsSL https://starship.rs/install.sh | bash
 
-echo "Install zplug a plugin manager for zsh"
-curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-
 touch $HOME/.credrc.sh
-chsh -s `which zsh`
 
 echo
 echo "-----------------------------------------"
