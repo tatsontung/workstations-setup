@@ -16,6 +16,7 @@ rm  -rf /tmp/gitduet
 mkdir -p /tmp/gitduet
 curl -L https://github.com/git-duet/git-duet/releases/download/0.7.0/linux_amd64.tar.gz > /tmp/gitduet/gitduet.tar.gz
 tar -xvzf /tmp/gitduet/gitduet.tar.gz --directory /tmp/gitduet
+mkdir -p $HOME/.local/bin
 sudo mv /tmp/gitduet/git-* $HOME/.local/bin
 
 echo

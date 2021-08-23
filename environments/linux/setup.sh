@@ -19,23 +19,23 @@ function install_script() {
     source ${MY_DIR}/scripts/commons/fish.sh
     read -p "Choose your shell interpretor wisely ? (zsh/fish)" shell
     case $shell in
-        fish) if [ "$(whoami)" != "root" ]
-              then
-                  sudo chsh -s `which fish`
-              else
-                  chsh -s `which fish`
-              fi
-              break;;
-        zsh)
-            chsh -s `which zsh`
-            break;;
+	    fish) 
+		    if [ "$(whoami)" != "root" ]
+
+		    then
+			    sudo chsh -s `which fish`
+		    else
+			    chsh -s `which fish`
+		    fi
+	    zsh)
+		    chsh -s `which zsh`
     esac
     source ${MY_DIR}/scripts/commons/shell.sh
 }
 
 function pre-requis() {
-    sudo cp ${MY_DIR}/config/${ENVR}/apt.95proxies /etc/apt/apt.conf.d/95proxies
-    source ${MY_DIR}/config/${ENVR}/cntlm.sh
+sudo cp ${MY_DIR}/config/${ENVR}/apt.95proxies /etc/apt/apt.conf.d/95proxies
+source ${MY_DIR}/config/${ENVR}/cntlm.sh
 }
 
 # echo "Caching password..."
@@ -45,11 +45,11 @@ function pre-requis() {
 
 echo "Setting up a '$DIST' machine... with '$ENVR'"
 case $ENVR in
-    internal)
-        pre-requis
-        install_script
-        ;;
-    *)
-        install_script
-        ;;
+	internal)
+		pre-requis
+		install_script
+		;;
+	*)
+		install_script
+		;;
 esac
