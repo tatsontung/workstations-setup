@@ -14,9 +14,22 @@ function install_script() {
     source ${MY_DIR}/scripts/commons/config.sh
     source ${MY_DIR}/scripts/commons/git.sh
     source ${MY_DIR}/scripts/commons/apps.sh
-    # source ${MY_DIR}/scripts/commons/bash.sh
-    # source ${MY_DIR}/scripts/commons/zsh.sh
-    # source ${MY_DIR}/scripts/commons/fish.sh
+    source ${MY_DIR}/scripts/commons/bash.sh
+    source ${MY_DIR}/scripts/commons/zsh.sh
+    source ${MY_DIR}/scripts/commons/fish.sh
+    read -p "Choose your shell interpretor wisely ? (zsh/fish)" shell
+    case $shell in
+        fish) if [ "$(whoami)" != "root" ]
+              then
+                  sudo chsh -s `which fish`
+              else
+                  chsh -s `which fish`
+              fi
+              break;;
+        zsh)
+            chsh -s `which zsh`
+            break;;
+    esac
     source ${MY_DIR}/scripts/commons/shell.sh
 }
 
@@ -35,8 +48,8 @@ case $ENVR in
     internal)
         pre-requis
         install_script
-    ;;
+        ;;
     *)
         install_script
-    ;;
+        ;;
 esac

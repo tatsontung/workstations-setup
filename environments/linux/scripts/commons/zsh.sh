@@ -18,4 +18,3 @@ fi
 echo "Install zplug a plugin manager for zsh"
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
-chsh -s `which zsh`
