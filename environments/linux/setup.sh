@@ -27,10 +27,14 @@ function install_script() {
 		    else
 			    chsh -s `which fish`
 		    fi
-	    zsh)
-		    chsh -s `which zsh`
+            ;;
+        zsh)
+            chsh -s `which zsh`
     esac
+    echo "Copy all dotfiles to home folder"
+    cp -v ${MY_DIR}/config/.* ${HOME}
     source ${MY_DIR}/scripts/commons/shell.sh
+
 }
 
 function pre-requis() {
@@ -45,11 +49,11 @@ source ${MY_DIR}/config/${ENVR}/cntlm.sh
 
 echo "Setting up a '$DIST' machine... with '$ENVR'"
 case $ENVR in
-	internal)
-		pre-requis
-		install_script
-		;;
-	*)
-		install_script
-		;;
+    internal)
+        pre-requis
+        install_script
+        ;;
+    *)
+        install_script
+        ;;
 esac
