@@ -6,10 +6,8 @@ DIST=$1
 ENVR=$2
 export MY_DIR="$(dirname "$0")"
 function install_script() {
-    echo "Install custom dircolors"
     # Get root up in here
     source ${MY_DIR}/scripts/${DIST}/bootstrap.sh
-    cp ${MY_DIR}/config/dircolors.ansi-dark.config ~/.dircolors
     source ${MY_DIR}/config/${ENVR}/homeconfig.sh
     source ${MY_DIR}/scripts/commons/config.sh
     source ${MY_DIR}/scripts/commons/git.sh
@@ -27,9 +25,9 @@ function install_script() {
 		    else
 			    chsh -s `which fish`
 		    fi
-            ;;
-        zsh)
-            chsh -s `which zsh`
+		    ;;
+	    zsh)
+		    chsh -s `which zsh`
     esac
     echo "Copy all dotfiles to home folder"
     cp -v ${MY_DIR}/config/.* ${HOME}
@@ -49,11 +47,11 @@ source ${MY_DIR}/config/${ENVR}/cntlm.sh
 
 echo "Setting up a '$DIST' machine... with '$ENVR'"
 case $ENVR in
-    internal)
-        pre-requis
-        install_script
-        ;;
-    *)
-        install_script
-        ;;
+	internal)
+		pre-requis
+		install_script
+		;;
+	*)
+		install_script
+		;;
 esac
