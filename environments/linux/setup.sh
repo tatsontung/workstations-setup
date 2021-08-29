@@ -31,6 +31,7 @@ function install_script() {
     esac
     echo "Copy all dotfiles to home folder"
     cp -v ${MY_DIR}/config/.[^.]* ${HOME}
+    source ${MY_DIR}/scripts/commons/editor.sh
     source ${MY_DIR}/scripts/commons/shell.sh
 
 }
