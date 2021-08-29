@@ -34,8 +34,8 @@ function install_script() {
     then
         echo "COMMAND dconf could not be found think to switch to Gnome"
     else
-        dconf load /com/gexperts/Tilix/ < {$MY_DIR}/config/dracula.gnome.terminal.conf
-        dconf load /org/gnome/terminal/legacy/profiles:/ < /{$MY_DIR}/config/dracula.tilix.terminal.conf
+        dconf load /com/gexperts/Tilix/ < ${MY_DIR}/config/dracula.tilix.terminal.conf
+        dconf load /org/gnome/terminal/legacy/profiles:/ < ${MY_DIR}/config/dracula.gnome.terminal.conf
     fi
 
     echo "Copy all dotfiles to home folder"
