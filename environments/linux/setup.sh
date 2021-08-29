@@ -17,20 +17,20 @@ function install_script() {
     source ${MY_DIR}/scripts/commons/fish.sh
     read -p "Choose your shell interpretor wisely ? (zsh/fish)" shell
     case $shell in
-	    fish) 
-		    if [ "$(whoami)" != "root" ]
+			fish)
+				if [ "$(whoami)" != "root" ]
 
-		    then
-			    sudo chsh -s `which fish`
-		    else
-			    chsh -s `which fish`
-		    fi
-		    ;;
-	    zsh)
-		    chsh -s `which zsh`
+				then
+					sudo chsh -s `which fish`
+				else
+					chsh -s `which fish`
+				fi
+				;;
+			zsh)
+				chsh -s `which zsh`
     esac
     echo "Copy all dotfiles to home folder"
-    cp -v ${MY_DIR}/config/.* ${HOME}
+    cp -v ${MY_DIR}/config/.[^.]* ${HOME}
     source ${MY_DIR}/scripts/commons/shell.sh
 
 }
