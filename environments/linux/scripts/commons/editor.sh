@@ -1,7 +1,11 @@
 #!/bin/env bash
 
 echo "Installing my custom nvim fork from lunar nvim"
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+mv ./nvim.appimage $HOME/.local/bin/nvim
 rm -rf $HOME/.config/nvim
+rm -rf $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 bash <(curl -s https://raw.githubusercontent.com/tatsontung/nvim/master/utils/installer/install.sh)
 
 echo "Installing my custom vim fork and config folder"
