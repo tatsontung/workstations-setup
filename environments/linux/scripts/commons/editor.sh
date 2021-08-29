@@ -7,7 +7,7 @@ bash <(curl -s https://raw.githubusercontent.com/tatsontung/nvim/master/utils/in
 echo "Installing my custom vim fork and config folder"
 rm -rf $HOME/.config/vim
 rm -rf $HOME/.vim
-rm $HOME/.vimrc
+rm -f $HOME/.vimrc
 git clone https://github.com/tatsontung/vim $HOME/.config/vim
 
 curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
