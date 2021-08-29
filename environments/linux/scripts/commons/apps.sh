@@ -10,13 +10,16 @@ fi
 
 # Install Nodejs and NPM
 echo "Installing node"
-export NVM_DIR="$HOME/.nvm" && (
-  git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
-  cd "$NVM_DIR"
-  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-) && \. "$NVM_DIR/nvm.sh"
-
-nvm install --lts=erbium # "node" is an alias for the latest version
+if [ ! -d ~/.nvm ]; then
+  export NVM_DIR="$HOME/.nvm" && (
+    git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+    cd "$NVM_DIR"
+    git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+  ) && \. "$NVM_DIR/nvm.sh"
+  nvm install --lts # "node" is an alias for the latest version
+else
+  echo "NVM is already installed"
+fi
 
 echo "Configure npmrc"
 cat > ~/.npmrc << EOL
@@ -32,6 +35,7 @@ npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 # Install Rust
+echo "Install Rust and Cargo"
 if [ ! -d ~/.cargo ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 else
