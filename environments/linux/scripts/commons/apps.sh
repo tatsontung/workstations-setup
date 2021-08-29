@@ -32,7 +32,11 @@ npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
 
 # Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+if [ ! -d ~/.cargo ]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+else
+  echo "Alreay install rust and cargo"
+fi
 
 # Install Go
 if [ ! -d ~/sdk/go ]; then
@@ -47,7 +51,11 @@ else
 fi
 
 # Install SDK Man
-curl -s "https://get.sdkman.io" | bash
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-sdk list java
+if [ ! -d ~/.sdkman ]; then
+  curl -s "https://get.sdkman.io" | bash
+  export SDKMAN_DIR="$HOME/.sdkman"
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+  sdk list java
+else
+  echo "Already have sdk man"
+fi
