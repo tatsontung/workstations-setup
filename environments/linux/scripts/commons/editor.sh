@@ -5,7 +5,6 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 mv ./nvim.appimage $HOME/.local/bin/nvim
 rm -rf $HOME/.config/nvim
-rm -rf $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
 bash <(curl -s https://raw.githubusercontent.com/tatsontung/nvim/master/utils/installer/install.sh)
 
 echo "Installing my custom vim fork and config folder"
@@ -20,6 +19,10 @@ ln -s ~/.vim/.vimrc ~/.vimrc
 ~/.vim/bin/install
 mkdir -p ~/.vim/colors
 
- echo "Install Doom Emacs"
- git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
- ~/.emacs.d/bin/doom install
+echo "Install Doom Emacs"
+if [ ! -d ~/.emacs.d ]; then
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install
+else
+    echo "Doom Emacs Already Installed"
+fi

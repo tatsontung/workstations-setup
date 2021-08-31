@@ -23,7 +23,6 @@ if [ ! -d ~/.nvm ]; then
   nvm install --lts # "node" is an alias for the latest version
 else
   echo "NVM is already installed"
-  export NVM_DIR="$HOME/.nvm" && "$NVM_DIR/nvm.sh"
 fi
 
 echo "Configure npmrc"
