@@ -7,14 +7,14 @@ echo "Installing applications"
 
 # Utilities
 
-brew cask install flycut
-brew cask install shiftit
+brew install --cask flycut
+brew install --cask shiftit
 echo
 echo "configure shiftit to select 1/3 screen width, 1/2 screen width and 2/3 screen width:"
 echo "`defaults write org.shiftitapp.ShiftIt multipleActionsCycleWindowSizes YES`"
 echo
-brew cask install dash
-brew cask install postman
+brew install --cask dash
+brew install --cask postman
 
 # Terminals
 brew install jenv
@@ -25,9 +25,9 @@ echo "Show wireless network on terminal"
 sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
 echo "Install nerdfont"
 brew tap homebrew/cask-fonts
-brew cask install font-hack-nerd-font
-brew cask install font-monofur-nerd-font
-brew cask install font-monofur-nerd-font-mono
+brew install --cask font-hack-nerd-font
+brew install --cask font-monofur-nerd-font
+brew install --cask font-monofur-nerd-font-mono
 echo "Install devel sdk"
 brew install nvm
 brew install corkscrew
@@ -45,14 +45,11 @@ brew install zsh
 sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
 
 # Browsers
-brew cask install google-chrome
-brew cask install firefox
-
-# Communication
-brew cask install slack
+brew install --cask google-chrome
+brew install --cask firefox
 
 # Text Editors
-brew cask install macvim
-brew cask install jetbrains-toolbox --force # guard against pre-installed jetbrains-toolbox
-brew cask install visual-studio-code
+brew install --cask macvim
+brew install --cask jetbrains-toolbox --force # guard against pre-installed jetbrains-toolbox
+brew install --cask visual-studio-code
 set -e
