@@ -228,7 +228,7 @@ ex ()
 
 export PATH=$HOME/bin:$HOME/.bin:$HOME/.local/bin:$NVM_BIN:$GRAALVM_HOME/bin:$HOME/.npm-packages/bin:$HOME/bin/jav/bin:$HOME/sdk/go/bin:/var/lib/snapd/snap/bin:$PATH
 
-source "$HOME/.local/bin/gita-completion.zsh"
+# source "$HOME/.local/bin/gita-completion.zsh"
 source "$HOME/.cargo/env"
 
 # Set up Node Version Manager
