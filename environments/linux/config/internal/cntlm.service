@@ -1,0 +1,7 @@
+[Unit]
+Description=CNTLM User Systemd Init
+
+[Service]
+ExecStart=/usr/bin/cntlm -c $HOME/workspace/cntlm.conf -v
+Restart=always
+RestartSec=10

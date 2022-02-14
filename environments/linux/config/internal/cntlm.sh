@@ -60,9 +60,21 @@ pid=$!
 curl -x localhost:3128 https://wttr.in/
 kill -9 ${pid}
 
+# When we use global systemd
 echo "Now copy the file config.cntlm to /etc/cntlm.config with this commande"
 echo "sudo cp config.cntlm /etc/cntlm.config"
 echo "then start cntlm service to continue the installation"
 sudo cp ${MY_DIR}/config.cntlm /etc/cntlm.config
 sudo service cntlm start
+exit
+
+# When we use user systemd
+echo "Now copy the file config.cntlm to /etc/cntlm.config with this commande"
+echo "cp config.cntlm $HOME/workspace/cntlm.config"
+echo "then start cntlm service to continue the installation"
+cp ${MY_DIR}/config.cntlm $HOME/workspace/cntlm.config
+cp ${MY_DIR}/config.service $HOME/.config/systemd/user
+systemctl --user daemon-reload
+systemctl --user start cntlm
+systemctl --user status cntlm
 exit
