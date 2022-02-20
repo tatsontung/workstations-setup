@@ -33,6 +33,7 @@ EOL
 
 # Install lazy docker
 curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
+rm lazydocker
 
 # Install Rust
 echo "Install Rust and Cargo"
