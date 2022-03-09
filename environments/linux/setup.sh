@@ -12,7 +12,7 @@ function install_script() {
     source ${MY_DIR}/scripts/commons/config.sh
     source ${MY_DIR}/scripts/commons/git.sh
     source ${MY_DIR}/scripts/commons/apps.sh
-    source ${MY_DIR}/scripts/commons/bash.sh
+    # source ${MY_DIR}/scripts/commons/bash.sh
     source ${MY_DIR}/scripts/commons/zsh.sh
     source ${MY_DIR}/scripts/commons/fish.sh
     read -p "Choose your shell interpretor wisely ? (zsh/fish)" shell
