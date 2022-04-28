@@ -29,27 +29,57 @@ brew install --cask font-hack-nerd-font
 brew install --cask font-monofur-nerd-font
 brew install --cask font-monofur-nerd-font-mono
 echo "Install devel sdk"
-brew install nvm
 brew install corkscrew
-brew install starship
+brew install ferdi
 brew install fasd
 brew install w3m
 brew install imagemagick
-brew cask install iterm2
+brew install --cask alacritty
+brew install --cask kitty
 echo "Install powerlevel9k themes for zsh"
 git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 echo "Install zsh and set as default shell"
 brew install zsh
-sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh
 
 # Browsers
 brew install --cask google-chrome
 brew install --cask firefox
 
+# Install Rust
+echo "Install Rust and Cargo"
+if [ ! -d ~/.cargo ]; then
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+else
+  echo "Alreay install rust and cargo"
+fi
+
+echo "Installing my custom nvim fork and config folder"
+brew install neovim
+git clone https://github.com/tatsontung/vim $HOME/.config/vim
+
+echo "Installing my custom vim fork and config folder"
+rm -rf $HOME/.config/vim
+rm -rf $HOME/.vim
+rm -f $HOME/.vimrc
+git clone https://github.com/tatsontung/vim $HOME/.config/vim
+
+curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+ln -s $HOME/.config/vim $HOME/.vim
+ln -s ~/.vim/.vimrc ~/.vimrc
+~/.vim/bin/install
+mkdir -p ~/.vim/colors
+
+echo "Install Doom Emacs"
+if [ ! -d ~/.emacs.d ]; then
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install
+else
+    echo "Doom Emacs Already Installed"
+fi
+
 # Text Editors
-brew install --cask macvim
 brew install --cask jetbrains-toolbox --force # guard against pre-installed jetbrains-toolbox
 brew install --cask visual-studio-code
 set -e

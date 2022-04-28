@@ -1,33 +1,29 @@
+#!/usr/bin/env bash
+
 echo
 echo "Installing Git and associated tools"
 brew install git
-brew tap git-duet/tap
-brew install git-duet
-brew install vim
+brew install tig
+brew install git-duet/tap/git-duet
 
 echo
-echo "Setting global Git configurations"
-git config --global core.editor /usr/local/bin/vim
-git config --global transfer.fsckobjects true
-
-HOOKS_DIRECTORY=$HOME/workspace/git-hooks-core
-if [ ! -d $HOOKS_DIRECTORY ]; then
-  echo
-  echo "Installing git hooks for cred-alert"
-  # for more information see https://github.com/pivotal-cf/git-hooks-core
-  git clone https://github.com/pivotal-cf/git-hooks-core $HOOKS_DIRECTORY
-  git config --global --add core.hooksPath $HOOKS_DIRECTORY
-else
-  echo
-  echo "Updating git-hooks for cred-alert"
-  pushd $HOOKS_DIRECTORY
-  git pull -r
-  popd
-fi
-
-# install cred-alert-cli
-os_name=$(uname | awk '{print tolower($1)}')
-curl -o cred-alert-cli \
-  https://s3.amazonaws.com/cred-alert/cli/current-release/cred-alert-cli_${os_name}
-chmod 755 cred-alert-cli
-mv cred-alert-cli /usr/local/bin # <= or other directory in ${PATH}
+echo "Setting up Git aliases..."
+git config --global alias.gst git status
+git config --global alias.st status
+git config --global alias.di diff
+git config --global alias.co checkout
+git config --global alias.ci commit
+git config --global alias.cp cherry-pick
+git config --global alias.br branch
+git config --global alias.sta stash
+git config --global alias.llog "log --date=local"
+git config --global alias.flog "log --pretty=fuller --decorate"
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+git config --global alias.lol "log --graph --decorate --oneline"
+git config --global alias.lola "log --graph --decorate --oneline --all"
+git config --global alias.blog "log origin/master... --left-right"
+git config --global alias.ds "diff --staged"
+git config --global alias.fixup "commit --fixup"
+git config --global alias.squash "commit --squash"
+git config --global alias.unstage "reset HEAD"
+git config --global alias.rum "rebase master@{u}"
