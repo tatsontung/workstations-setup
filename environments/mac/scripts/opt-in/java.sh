@@ -1,9 +1,3 @@
-echo
-echo "Installing most recent version of Java"
-brew tap adoptopenjdk/openjdk
-brew install --cask adoptopenjdk8
-echo
-
 # Install SDK Man
 if [ ! -d ~/.sdkman ]; then
   curl -s "https://get.sdkman.io" | bash
