@@ -38,7 +38,7 @@ function install_script() {
     fi
 
     echo "Copy all dotfiles to home folder"
-    cp -v ${MY_DIR}/config/.[^.]* ${HOME}
+    cp -rv ${MY_DIR}/config/.[^.]* ${HOME}
     source ${MY_DIR}/scripts/commons/editor.sh
     source ${MY_DIR}/scripts/commons/shell.sh
 

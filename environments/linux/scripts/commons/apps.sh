@@ -10,8 +10,9 @@ fi
 
 # Install Nodejs and NPM
 echo "Installing node"
-if [ ! -d ~/.nvm ]; then
+if [ ! -d ~/.nodebrew ]; then
   curl -L git.io/nodebrew | perl - setup
+  export PATH=$HOME/.nodebrew/current/bin:$PATH
   nodebrew install latest
   # nodebrew install stable # stable version
   # nodebrew install stable # stable version
@@ -24,16 +25,6 @@ else
   echo "NVM is already installed"
 fi
 
-# echo "Configure npmrc"
-# cat > ~/.npmrc << EOL
-# cache=${HOME}/.npm-cache
-# strict-ssl=false
-# EOL
-
-# Install lazy docker
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-rm lazydocker
-
 # Install Rust
 echo "Install Rust and Cargo"
 if [ ! -d ~/.cargo ]; then
@@ -43,10 +34,16 @@ else
 fi
 
 # Install Go brew a Go version manager
-curl -sLk https://git.io/gobrew | sh
-gobrew ls
-gobrew install 1.16
-gobrew use 1.16
+if [ ! -d ~/.cargo ]; then
+	curl -sLk https://git.io/gobrew | sh
+	export PATH="$HOME/.gobrew/bin:$PATH"
+	eval "$(gobrew init -)"
+	gobrew install 1.16
+	gobrew use 1.16
+	gobrew ls
+else
+	echo "Already install go"
+fi
 
 # Install SDK Man
 if [ ! -d ~/.sdkman ]; then

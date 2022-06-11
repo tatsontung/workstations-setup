@@ -225,7 +225,7 @@ export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$NVM_BIN:$GRAALVM_HOME/bin:$H
 
 
 [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-[[ -f ~/.credrc ]] && source ~/.bash_alias
+[[ -f ~/.bash_alias ]] && source ~/.bash_alias
 
 # source "$HOME/.local/bin/gita-completion.zsh"
 source "$HOME/.cargo/env"
