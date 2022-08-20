@@ -25,17 +25,18 @@ scoop install winfetch
 scoop install cloudfoundry-cli
 scoop install extras/vcredist2015
 scoop install msys2
-scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
+scoop install starship
+# scoop install https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/oh-my-posh.json
 
-echo "Cloning Neovim Doom Config"
-git clone --depth 1 -b develop https://github.com/NTBBloodbath/doom-nvim.git $env:USERPROFILE/AppData/Local/nvim
+echo "Cloning AstroNvim Config"
+git clone https://github.com/AstroNvim/AstroNvim $env:USERPROFILE/AppData/Local/nvim
 
-Install-Module post-git -Scope Current User
-Install-Module oh-my-posh -Scope Current User
-Install-Module PSReadLine -Scope CurrentUser
-Install-Module PSFzf -Scope CurrentUser
-Install-Module z -Scope CurrentUser
-
+# Install-Module post-git -Scope Current User
+# Install-Module oh-my-posh -Scope Current User
+# Install-Module PSReadLine -Scope CurrentUser
+# Install-Module PSFzf -Scope CurrentUser
+# Install-Module z -Scope CurrentUser
+#
 # Mush do symbolic link before installing sdkman
 # ln -s /c/Program\ Files/7-Zip/7z.exe /c/Program\ Files/Git/mingw64/bin/zip.exe
 # curl -s "https://get.sdkman.io" | bash
