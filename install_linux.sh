@@ -29,6 +29,7 @@ fi
 
 distribution=debian
 configuration=external
+shell=bash
 
 while getopts hd:c: opt; do
     case $opt in
