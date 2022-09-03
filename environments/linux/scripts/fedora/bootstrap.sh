@@ -13,9 +13,8 @@ then
     # Update all dependencies and install packages
     sudo dnf update -y
     
-    sudo dnf install -y git vim wget curl htop lsof tmux tty-clock \
-    fasd zsh fish taskwarrior copyq ranger mc cmus httpie tree xsel \
-    atool highlight w3m mediainfo emacs
+    sudo dnf install -y git vim emacs wget curl htop lsof tmux \
+    zsh fish copyq ranger mc cmus httpie tree xsel
     
     # SYSCTL
     echo "setting sysctl to 9001!!!"
@@ -25,9 +24,8 @@ else
     # Update all dependencies and install packages
     dnf update -y
     
-    sudo dnf install -y git vim wget curl htop lsof tmux tty-clock \
-    fasd zsh fish taskwarrior copyq ranger mc cmus httpie tree xsel \
-    atool highlight w3m mediainfo emacs
+    sudo dnf install -y git vim emacs wget curl htop lsof tmux \
+    zsh fish copyq ranger mc cmus httpie tree xsel
     
     # SYSCTL
     echo "setting sysctl to 9001!!!"
