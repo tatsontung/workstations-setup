@@ -1,6 +1,6 @@
 terminal:
   # This can be any image that has the necessary runtime environment for your project.
-  image: fedora:36
+  image: fedora:latest
   before_script:
     - dnf update
   script: sleep 60
