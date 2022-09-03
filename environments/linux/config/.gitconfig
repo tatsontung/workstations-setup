@@ -1,0 +1,5 @@
+[user]
+	name = Tat Corp
+	email = tat.dev@tatcorp.com
+[core]
+	editor = vim
