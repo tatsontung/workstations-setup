@@ -119,11 +119,6 @@ zstyle ':completion:*' cache-path ~/.cache/zcache
 # automatically load bash completion functions
 autoload -U +X bashcompinit && bashcompinit
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-[[ -f ~/.profile ]] && source ~/.profile
-[[ -f ~/.aliasrc ]] && source ~/.aliasrc
-[[ -f ~/.credrc ]] && source ~/.credrc
-
 # Keys
 # Use emacs key bindings
 #bindkey -e
@@ -228,7 +223,10 @@ ex ()
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$NVM_BIN:$GRAALVM_HOME/bin:$HOME/.npm-packages/bin:$HOME/bin/jav/bin:$HOME/sdk/go/bin:/var/lib/snapd/snap/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/.nodebrew/current/bin:$PATH"
 
-source ~/.bash_alias
+
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+[[ -f ~/.credrc ]] && source ~/.bash_alias
+
 # source "$HOME/.local/bin/gita-completion.zsh"
 source "$HOME/.cargo/env"
 
@@ -236,7 +234,6 @@ source "$HOME/.cargo/env"
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-#Prompt
 eval "$(starship init zsh)"
 source ~/.nix-profile/etc/profile.d/nix.sh
 

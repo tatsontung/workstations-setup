@@ -4,15 +4,15 @@ export PATH="$HOME/.local/bin:/usr/bin/:/usr/local/bin:$HOME/.gobrew/current/bin
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-7
 
-# Example aliases
-# alias bashconfig="mate ~/.bashrc"
-source ~/.bash_alias
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[[ -f ~/.credrc ]] && source ~/.bash_alias
+
+# source "$HOME/.local/bin/gita-completion.zsh"
+source "$HOME/.cargo/env"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 eval "$(starship init bash)"
 source ~/.nix-profile/etc/profile.d/nix.sh
