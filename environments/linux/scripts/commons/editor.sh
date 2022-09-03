@@ -3,6 +3,7 @@
 echo "Installing Custom NeoVim fork and config folder"
 rm -rf $HOME/.config/nvim
 git clone https://github.com/tatsontung/nvim ${XDG_CONFIG_HOME:-$HOME/.config}/nvim
+nvim +PackerSyn
 
 echo "Installing Custom Vim fork and config folder"
 rm -rf $HOME/.config/vim
