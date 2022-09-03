@@ -242,9 +242,11 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 #Prompt
 eval "$(starship init zsh)"
+source ~/.nix-profile/etc/profile.d/nix.sh
 
 if [ -f /etc/arch-release ]; then
-  pfetch
+  neofetch
 else
-  pfetch
+  neofetch
 fi
+

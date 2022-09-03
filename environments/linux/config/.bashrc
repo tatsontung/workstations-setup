@@ -185,12 +185,6 @@ alias m='f -e mplayer'   # quick opening files with mplayer
 alias o='a -e xdg-open'  # quick opening files with xdg-open
 alias nv='f -e nvim'
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 # RETROPIE PROFILE START
 function getIPAddress() {
     local ip_route
@@ -302,3 +296,12 @@ function retropie_welcome() {
 retropie_welcome
 [[ $(tty) == "/dev/tty1" ]] && pkill mpg123
 # RETROPIE PROFILE END
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+eval "$(starship init bash)"
+source ~/.nix-profile/etc/profile.d/nix.sh

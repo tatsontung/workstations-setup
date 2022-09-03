@@ -1,155 +1,138 @@
-## FIRST LINE/ROW: Info & Status
-# First param ─┌
+format = """
+[](#9A348E)\
+$username\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#FFFB38)\
+$git_branch\
+$git_status\
+[](fg:#FFFB38)\
+$fill\
+[](fg:#FF9148)\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+[](fg:#FF9148)\
+$line_break\
+[](fg:#33658A)\
+$time\
+[](fg:#33658A bg:#9A348E)\
+$cmd_duration\
+[](fg:#9A348E bg:#06969A)\
+$docker_context\
+[](fg:#06969A)
+"""
+
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like  to save some space
 [username]
-format = " [┌🤘-🚀 $user]($style)@"
-style_user = "bold yellow"
-style_root = "bold red"
 show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[ ]($style)'
 
-# Second param
-[hostname]
-format = "💻[$hostname]($style) in 📁 "
-style = "bold green"
-#trim_at = "-"
-ssh_only = false
-disabled = false
-
-# Third param
 [directory]
-style = "purple"
-truncation_length = 0
-truncate_to_repo = true
-truncation_symbol = "repo: "
+style = "bg:#DA627D"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
 
-# Before all the version info (python, nodejs, php, etc.)
-[git_status]
-style = "white"
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
-deleted = "x"
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = "  "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important  " = "  "
 
-# Last param in the first line/row
-[cmd_duration]
-min_time = 1
-format = "took [$duration]($style)"
-disabled = false
+[c]
+symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 
-
-## SECOND LINE/ROW: Prompt
-# Somethere at the beginning
-[battery]
-full_symbol = " "
-charging_symbol = " "
-discharging_symbol = " "
-disabled = true
-
-[[battery.display]]  # "bold red" style when capacity is between 0% and 10%
-threshold = 15
-style = "bold red"
-disabled = true
-
-[[battery.display]]  # "bold yellow" style when capacity is between 10% and 30%
-threshold = 50
-style = "bold yellow"
-disabled = true
-
-[[battery.display]]  # "bold green" style when capacity is between 10% and 30%
-threshold = 80
-style = "bold green"
-disabled = true
-
-# Prompt: optional param 1
-[time]
-format = " 🕙 $time($style)\n"
-time_format = "%T"
-style = "bright-white"
-disabled = false
-
-# Prompt: param 2 └─
-[character]
-success_symbol = " [└🤘-λ](bold yellow)"
-error_symbol = " [×](bold red)"
-# use_symbol_for_status = true
-
-# SYMBOLS
-[status]
-symbol = "🔥"
-format = '[ └$symbol$status_common_meaning$status_signal_name$status_maybe_int]($style)'
-map_symbol = true
-disabled = false
-
-[aws]
-symbol = " "
-
-[conda]
-symbol = " "
-
-[dart]
-symbol = " "
+[docker_context]
+symbol = " "
+style = "bg:#06969A"
+format = '[[ $symbol $context ](bg:#06969A)]($style) $path'
 
 [elixir]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
 
 [elm]
 symbol = " "
+style = "bg:#86BBD8"
+format = '[[ $symbol ($version) ](bg:#86BBD8)]($style)'
+
+[fill]
+symbol = " "
 
 [git_branch]
-symbol = " "
+symbol = ""
+style = "bg:#FFFB38"
+format = '[[ $symbol $branch ](fg:#000000 bg:#FFFB38)]($style)'
+
+[git_status]
+style = "bg:#FFFB38"
+format = '[[($all_status$ahead_behind )](fg:#000000 bg:#FFFB38)]($style)'
 
 [golang]
 symbol = " "
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
 
-[hg_branch]
-symbol = " "
+[haskell]
+symbol = " "
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
 
 [java]
 symbol = " "
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
 
 [julia]
 symbol = " "
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
 
 [nim]
 symbol = " "
-
-[nix_shell]
-symbol = " "
-
-# [shell]
-# fish_indicator = ""
-# powershell_indicator = "_"
-# zsh_indicator = "🛠"
-# disabled = false
-
-[nodejs]
-symbol = " "
-
-[deno]
-format = "via [🦕 $version](green bold) "
-
-[package]
-symbol = " "
-
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[python]
-symbol = " "
-
-[ruby]
-symbol = " "
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
 
 [rust]
-symbol = " "
+symbol = ""
+style = "bg:#FF9148"
+format = '[[ $symbol ($version) ](fg:#000000 bg:#FF9148)]($style)'
 
-[swift]
-symbol = "ﯣ "
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#33658A"
+format = '[[ 📅 $time ](bg:#33658A)]($style)'
 
-[custom.haskell]
-symbol = " "
-
-[custom.docker]
-symbol = " "
+[cmd_duration]
+min_time = 10
+style = "bg:#9A348E"
+format = '[[ ⌛ $duration ](bg:#9A348E)]($style)'
