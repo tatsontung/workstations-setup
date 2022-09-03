@@ -9,6 +9,7 @@ Usage: ${0##*/}
     [-d distribution ]
                             debian *
                             archlinux
+                            fedora
     [-c configuration ]
                             internal
                             external *

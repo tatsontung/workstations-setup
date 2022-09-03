@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 
 echo "Installing Custom NeoVim fork and config folder"
 rm -rf $HOME/.config/nvim
@@ -15,10 +15,10 @@ ln -s ~/.vim/.vimrc ~/.vimrc
 ~/.vim/bin/install
 mkdir -p ~/.vim/colors
 
-echo "Install Custom Doom Emacs"
-if [ ! -d ~/.emacs.d ]; then
-    git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-    ~/.emacs.d/bin/doom install
-else
-    echo "Doom Emacs Already Installed"
-fi
+# echo "Install Custom Doom Emacs"
+# if [ ! -d ~/.emacs.d ]; then
+#     git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+#     ~/.emacs.d/bin/doom install
+# else
+#     echo "Doom Emacs Already Installed"
+# fi
