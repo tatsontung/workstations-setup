@@ -17,6 +17,7 @@ else
 fi
 export PATH=$HOME/.nodebrew/current/bin:$PATH
 nodebrew install latest
+nodebrew use latest
 # nodebrew install stable # stable version
 # nodebrew install stable # stable version
 # nodebrew install v8.9   # v8.9 latest
