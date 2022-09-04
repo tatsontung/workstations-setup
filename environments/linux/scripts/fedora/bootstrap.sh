@@ -14,7 +14,7 @@ then
     sudo dnf update -y
     
     sudo dnf install -y git vim emacs wget curl htop lsof tmux \
-    zsh fish copyq ranger mc cmus httpie tree xsel
+    zsh fish copyq ranger mc cmus httpie tree xsel util-linux-user
     
     # SYSCTL
     echo "setting sysctl to 9001!!!"
@@ -25,7 +25,7 @@ else
     dnf update -y
     
     sudo dnf install -y git vim emacs wget curl htop lsof tmux \
-    zsh fish copyq ranger mc cmus httpie tree xsel
+    zsh fish copyq ranger mc cmus httpie tree xsel util-linux-user
     
     # SYSCTL
     echo "setting sysctl to 9001!!!"

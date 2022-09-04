@@ -12,18 +12,18 @@ fi
 echo "Installing node"
 if [ ! -d ~/.nodebrew ]; then
   curl -L git.io/nodebrew | perl - setup
-  export PATH=$HOME/.nodebrew/current/bin:$PATH
-  nodebrew install latest
-  # nodebrew install stable # stable version
-  # nodebrew install stable # stable version
-  # nodebrew install v8.9   # v8.9 latest
-  # nodebrew install 8.9.4  # without `v`
-  echo "Installing angular 2 core"
-  export NG_CLI_ANALYTICS=ci
-  npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 else
-  echo "NVM is already installed"
+  echo "NodeBrew is already installed"
 fi
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+nodebrew install latest
+# nodebrew install stable # stable version
+# nodebrew install stable # stable version
+# nodebrew install v8.9   # v8.9 latest
+# nodebrew install 8.9.4  # without `v`
+echo "Installing angular 2 core"
+export NG_CLI_ANALYTICS=ci
+npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 
 # Install Rust
 echo "Install Rust and Cargo"
