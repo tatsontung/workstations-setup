@@ -1,5 +1,10 @@
+#!/usr/bin/env bash
+
 # All these applications are independent, so if one
 # fails to install, don't stop.
+
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
 set +e
 echo
 echo "Installing applications"
