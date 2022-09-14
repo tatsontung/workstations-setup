@@ -1,0 +1,37 @@
+[user]
+	name = Tat Corp
+	email = tat.dev@tatcorp.com
+[core]
+	editor = vim
+[alias]
+	proxyon = config --global http.proxy http://127.0.0.1:3128
+	proxyoff = config --global --remove-section http
+	dc = duet-commit
+	rum = rebase master@{u}
+	st = status
+	di = diff
+	co = checkout
+	ci = commit
+	br = branch
+	sta = stash
+	llog = log --date=local
+	flog = log --pretty=fuller --decorate
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	lol = log --graph --decorate --oneline
+	lola = log --graph --decorate --oneline --all
+	blog = log origin/master... --left-right
+	ds = diff
+	squash = commit
+	unstage = reset
+[push]
+	default = simple
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+[global]
+[pull]
+	rebase = true
+[init]
+	defaultBranch = main

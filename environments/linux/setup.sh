@@ -12,7 +12,6 @@ function install_script() {
     source ${MY_DIR}/scripts/commons/config.sh
     source ${MY_DIR}/scripts/commons/git.sh
     source ${MY_DIR}/scripts/commons/apps.sh
-    # source ${MY_DIR}/scripts/commons/bash.sh
     source ${MY_DIR}/scripts/commons/zsh.sh
     source ${MY_DIR}/scripts/commons/fish.sh
     read -p "Choose your shell interpretor wisely ? (zsh/fish)" shell
@@ -39,7 +38,8 @@ function install_script() {
     fi
 
     echo "Copy all dotfiles to home folder"
-    cp -v ${MY_DIR}/config/.[^.]* ${HOME}
+    cp -rv ${MY_DIR}/config/.[^.]* ${HOME}
+    source ${MY_DIR}/scripts/commons/nix.sh
     source ${MY_DIR}/scripts/commons/editor.sh
     source ${MY_DIR}/scripts/commons/shell.sh
 

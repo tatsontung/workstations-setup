@@ -6,11 +6,6 @@ else
     echo "Already have tmux tpm"
 fi
 
-echo "Install starship prompt"
-curl -fsSL https://starship.rs/install.sh | sh
-
-touch $HOME/.credrc.sh
-
 echo
 echo "-----------------------------------------"
 echo "Done!"

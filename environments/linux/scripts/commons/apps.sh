@@ -10,30 +10,21 @@ fi
 
 # Install Nodejs and NPM
 echo "Installing node"
-if [ ! -d ~/.nvm ]; then
-  export NVM_DIR="$HOME/.nvm" && (
-    git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
-    cd "$NVM_DIR"
-    git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
-  ) && \. "$NVM_DIR/nvm.sh"
-  nvm install --lts # "node" is an alias for the latest version
-
-  echo "Installing angular 2 core"
-  export NG_CLI_ANALYTICS=ci
-  npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
+if [ ! -d ~/.nodebrew ]; then
+  curl -L git.io/nodebrew | perl - setup
 else
-  echo "NVM is already installed"
+  echo "NodeBrew is already installed"
 fi
-
-echo "Configure npmrc"
-cat > ~/.npmrc << EOL
-cache=${HOME}/.npm-cache
-strict-ssl=false
-EOL
-
-# Install lazy docker
-curl https://raw.githubusercontent.com/jesseduffield/lazydocker/master/scripts/install_update_linux.sh | bash
-rm lazydocker
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+nodebrew install latest
+nodebrew use latest
+# nodebrew install stable # stable version
+# nodebrew install stable # stable version
+# nodebrew install v8.9   # v8.9 latest
+# nodebrew install 8.9.4  # without `v`
+echo "Installing angular 2 core"
+export NG_CLI_ANALYTICS=ci
+npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
 
 # Install Rust
 echo "Install Rust and Cargo"
@@ -43,16 +34,16 @@ else
   echo "Alreay install rust and cargo"
 fi
 
-# Install Go
-if [ ! -d ~/sdk/go ]; then
-  curl -O https://dl.google.com/go/go1.15.linux-amd64.tar.gz
-  tar xvf go1.15.linux-amd64.tar.gz
-  mkdir -p ~/sdk
-  mv go ~/sdk/go1.15
-  ln -s ~/sdk/go1.15 ~/sdk/go
-  rm go1.15.linux-amd64.tar.gz
+# Install Go brew a Go version manager
+if [ ! -d ~/.cargo ]; then
+	curl -sLk https://git.io/gobrew | sh
+	export PATH="$HOME/.gobrew/bin:$PATH"
+	eval "$(gobrew init -)"
+	gobrew install 1.16
+	gobrew use 1.16
+	gobrew ls
 else
-  echo "Already have go install"
+	echo "Already install go"
 fi
 
 # Install SDK Man

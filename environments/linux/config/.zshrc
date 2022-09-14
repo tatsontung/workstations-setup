@@ -119,11 +119,6 @@ zstyle ':completion:*' cache-path ~/.cache/zcache
 # automatically load bash completion functions
 autoload -U +X bashcompinit && bashcompinit
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-[[ -f ~/.profile ]] && source ~/.profile
-[[ -f ~/.aliasrc ]] && source ~/.aliasrc
-[[ -f ~/.credrc ]] && source ~/.credrc
-
 # Keys
 # Use emacs key bindings
 #bindkey -e
@@ -226,25 +221,25 @@ ex ()
   fi
 }
 
-export PATH=$HOME/bin:$HOME/.bin:$HOME/.local/bin:$NVM_BIN:$GRAALVM_HOME/bin:$HOME/.npm-packages/bin:$HOME/bin/jav/bin:$HOME/sdk/go/bin:/var/lib/snapd/snap/bin:$PATH
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$NVM_BIN:$GRAALVM_HOME/bin:$HOME/.npm-packages/bin:$HOME/bin/jav/bin:$HOME/sdk/go/bin:/var/lib/snapd/snap/bin:$HOME/.gobrew/current/bin:$HOME/.gobrew/bin:$HOME/.nodebrew/current/bin:$PATH"
+
+
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+[[ -f ~/.bash_alias ]] && source ~/.bash_alias
 
 # source "$HOME/.local/bin/gita-completion.zsh"
 source "$HOME/.cargo/env"
-
-# Set up Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-#Prompt
 eval "$(starship init zsh)"
+source ~/.nix-profile/etc/profile.d/nix.sh
 
 if [ -f /etc/arch-release ]; then
-  pfetch
+  neofetch
 else
-  pfetch
+  neofetch
 fi
+

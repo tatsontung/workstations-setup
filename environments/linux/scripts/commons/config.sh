@@ -13,7 +13,8 @@ echo "Installing Mono nerd fonts"
 if [ ! -d ~/.local/share/fonts ]; then
   mkdir -p ~/.local/share/fonts
 fi
-pushd ~/.local/share/fonts
+
+pushd ~/.local/share/fonts || exit
 if [ ! -d Monofur ]; then
   rm -f ~/.local/share/fonts/*.zip
   curl https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Monofur.zip -O -J -L
@@ -23,5 +24,4 @@ if [ ! -d Monofur ]; then
   fc-cache -fv ~/.local/share/fonts
   rm ~/.local/share/fonts/*.zip
 fi
-popd
-
+popd || exit
