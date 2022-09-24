@@ -7,7 +7,7 @@ ENVR=$2
 export MY_DIR="$(dirname "$0")"
 function install_script() {
     # Get root up in here
-    source ${MY_DIR}/scripts/${DIST}/bootstrap.sh
+    #source ${MY_DIR}/scripts/${DIST}/bootstrap.sh
     source ${MY_DIR}/config/${ENVR}/homeconfig.sh
     source ${MY_DIR}/scripts/commons/config.sh
     source ${MY_DIR}/scripts/commons/git.sh
@@ -16,26 +16,17 @@ function install_script() {
     source ${MY_DIR}/scripts/commons/fish.sh
     read -p "Choose your shell interpretor wisely ? (zsh/fish)" shell
     case $shell in
-			fish)
-				if [ "$(whoami)" != "root" ]
-
-				then
-					sudo chsh -s `which fish`
-				else
-					chsh -s `which fish`
-				fi
-				;;
-			zsh)
-				chsh -s `which zsh`
+	    fish)
+		    if [ "$(whoami)" != "root" ]
+		    then
+			    sudo chsh -s `which fish`
+		    else
+			    chsh -s `which fish`
+		    fi
+		    ;;
+	    zsh)
+		    chsh -s `which zsh`
     esac
-
-    if ! command -v dconf &> /dev/null
-    then
-        echo "COMMAND dconf could not be found think to switch to Gnome"
-    else
-        dconf load /com/gexperts/Tilix/ < ${MY_DIR}/config/dracula.tilix.terminal.conf
-        dconf load /org/gnome/terminal/legacy/profiles:/ < ${MY_DIR}/config/dracula.gnome.terminal.conf
-    fi
 
     echo "Copy all dotfiles to home folder"
     cp -rv ${MY_DIR}/config/.[^.]* ${HOME}

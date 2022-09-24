@@ -23,5 +23,4 @@ echo "Install devel sdk"
 brew install fasd
 brew install w3m
 brew install imagemagick
-brew install kitty
-
+brew install jandedobbeleer/oh-my-posh/oh-my-posh

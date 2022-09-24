@@ -16,7 +16,7 @@ then
     sudo dnf install -y git vim emacs cmake wget curl htop lsof tmux \
     fzf zsh fish ranger mc cmus httpie tree xsel samba-common \
     nginx python python3 python3-pip neofetch duf exa bat \
-    atool highlight w3m mediainfo
+    atool highlight w3m mediainfo mpd util-linux-user kitty
 
     sudo systemctl disable nginx
 
