@@ -8,6 +8,6 @@ source ~/.nix-profile/etc/profile.d/nix.sh
 # search
 # nix-env -qPa
 # install
-nix-env -i starship vscodium neovim lazygit lazydocker fasd-unstable exa bat duf
+nix-env -i starship vscodium neovim lazygit lazydocker fasd-unstable netcat-openbsd
 # remove
-#nix-env -i vscodium neovim
+#nix-env -e exa bat

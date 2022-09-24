@@ -8,6 +8,18 @@ if [ ! -d ~/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 fi
 
+# echo "Installing node verion manager"
+# if [ ! -d ~/.nvm ]; then
+#   export NVM_DIR="$HOME/.nvm" && (
+#     git clone https://github.com/nvm-sh/nvm.git "$NVM_DIR"
+#     cd "$NVM_DIR"
+#     git checkout $(git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1))
+#   ) && \. "$NVM_DIR/nvm.sh"
+#   nvm install --lts # "node" is an alias for the latest version
+# else
+#   echo "NVM is already installed"
+# fi
+
 # Install Nodejs and NPM
 echo "Installing node"
 if [ ! -d ~/.nodebrew ]; then
