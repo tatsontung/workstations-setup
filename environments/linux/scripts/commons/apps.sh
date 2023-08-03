@@ -1,27 +1,23 @@
 #!/usr/bin/env bash
 
-# Install FzF
-echo
-echo "Installing fzf configuration"
-if [ ! -d ~/.fzf ]; then
-  rm -rf ~/.fzf
-  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
-fi
-
 # Install Nodejs and NPM
-echo "Installing node"
-if [ ! -d ~/.nodebrew ]; then
-  curl -L git.io/nodebrew | perl - setup
+echo "Installing NVM"
+if [ ! -d ~/.nvm ]; then
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.4/install.sh | bash
 else
-  echo "NodeBrew is already installed"
+  echo "NVM is already installed"
 fi
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-nodebrew install latest
-nodebrew use latest
-# nodebrew install stable # stable version
-# nodebrew install stable # stable version
-# nodebrew install v8.9   # v8.9 latest
-# nodebrew install 8.9.4  # without `v`
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+echo "Install pnpm"
+npm i -g pnpm
+export PNPM_HOME="$HOME/.local/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
 echo "Installing angular 2 core"
 export NG_CLI_ANALYTICS=ci
 npm i -g @angular/cli @angular/core webpack-cli webpack-bundle-analyzer
@@ -54,4 +50,20 @@ if [ ! -d ~/.sdkman ]; then
   sdk list java
 else
   echo "Already have sdk man"
+fi
+
+# Install FzF
+echo
+echo "Installing fzf configuration"
+if [ ! -d ~/.fzf ]; then
+  rm -rf ~/.fzf
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
+fi
+
+# Install Tmux Plugin Manager
+echo "Install tmux plugin manager"
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+    echo "Already have tmux tpm"
 fi

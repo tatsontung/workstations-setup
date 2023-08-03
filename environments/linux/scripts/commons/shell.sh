@@ -1,10 +1,4 @@
 #!/usr/bin/env bash
-echo "Install tmux plugin manager"
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-else
-    echo "Already have tmux tpm"
-fi
 
 echo
 echo "-----------------------------------------"
