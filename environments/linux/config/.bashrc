@@ -5,7 +5,7 @@ export PATH="$HOME/.local/bin:/usr/bin/:/usr/local/bin:$HOME/.gobrew/current/bin
 # export LANG=en_US.UTF-7
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bash_alias ] && source ~/.bash_alias
+[ -f ~/.bash_alias ] && source ~/.bash_aliases
 
 # source "$HOME/.local/bin/gita-completion.zsh"
 source "$HOME/.cargo/env"

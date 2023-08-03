@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 alias tmux='TERM=xterm-256color tmux'
 alias vim='TERM=xterm-256color vim'
 alias vi='vim'
@@ -104,7 +106,7 @@ alias gstd="git stash drop"
 alias gstl="git stash list"
 alias gh='cd "$(git rev-parse --show-toplevel)"'
 
-# proxy madness
+# Proxy madness
 PROXY_HOST=192.168.1.24
 PROXY_PORT=3128
 
@@ -115,11 +117,8 @@ alias npmproxyoff="npm config rm proxy;npm config rm https-proxy"
 alias npmproxyon="npm config set proxy http://$PROXY_HOST:$PROXY_PORT;npm config set https-proxy http://$PROXY_HOST:$PROXY_PORT"
 alias gitproxyon="git config --global http.proxy http://$PROXY_HOST:$PROXY_PORT"
 alias gitproxyoff="git config --global --unset http.proxy"
-
 alias gradleproxy="./gradlew -Dhttps.proxyHost=$PROXY_HOST -Dhttps.proxyPort=$PROXY_PORT -Dhttp.proxyHost=$PROXY_HOST -Dhttp.proxyPort=$PROXY_PORT"
-
 alias updatepath="export PATH=/snap/bin:$NVM_BIN:$HOME/bin:$JAVA_HOME/bin:$PATH"
-
 export _JAVA_OPTIONS="-Dhttp.proxyHost=$PROXY_HOST -Dhttp.proxyPort=$PROXY_PORT -Dhttps.proxyHost=$PROXY_HOST -Dhttps.proxyPort=$PROXY_PORT"
 export PATH=/snap/bin:$NVM_BIN:$HOME/bin:$JAVA_HOME/bin:$PATH
 

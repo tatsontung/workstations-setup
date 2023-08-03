@@ -29,20 +29,11 @@ function install_script() {
 				chsh -s `which zsh`
     esac
 
-    if ! command -v dconf &> /dev/null
-    then
-        echo "COMMAND dconf could not be found think to switch to Gnome"
-    else
-        dconf load /com/gexperts/Tilix/ < ${MY_DIR}/config/dracula.tilix.terminal.conf
-        dconf load /org/gnome/terminal/legacy/profiles:/ < ${MY_DIR}/config/dracula.gnome.terminal.conf
-    fi
-
     echo "Copy all dotfiles to home folder"
     cp -rv ${MY_DIR}/config/.[^.]* ${HOME}
     source ${MY_DIR}/scripts/commons/nix.sh
     source ${MY_DIR}/scripts/commons/editor.sh
     source ${MY_DIR}/scripts/commons/shell.sh
-
 }
 
 function pre-requis() {
